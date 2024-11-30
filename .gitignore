@@ -1,0 +1,8 @@
+.venv
+__pychache__/
+.DS_Store
+#docker-compose.prod.yml
+#docker-compose.yml
+*.sql
+#.env.dev
+#Dockerfile

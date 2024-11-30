@@ -1,0 +1,28 @@
+name: wallet
+
+services:
+  # WEB
+  web:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    environment:
+      - "SECRET_KEY=40DKCbHWGNVGK66psyg4Bg2CTYx5jd0xNFPp4m372vE"
+      - "DEBUG=True"
+      - "SSL_REQUIERED=False"
+
+  db:
+    image: postgres:16
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+
+volumes:
+  postgres_data:
