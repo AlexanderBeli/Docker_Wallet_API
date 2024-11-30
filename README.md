@@ -16,11 +16,25 @@ Then we need to launch it:
 $ docker-compose up -d --build
 ```
 
+Create the superuser
+
+```shell
+$ docker-compose exec web python3 manage.py createsuperuser
+```
+
 Open the browser and open the localhost:
 
 ```shell
 http://localhost:8000/api/v1/
 ```
+
+Here you can add some data 
+
+Also you can install httpie, open bash and play with API, for example:
+```shell
+$ http POST http://127.0.0.1:8000/api/v1/<YOUR_DATA_UUID>/operation/ operationType='WITHDRAW' amount=300
+```
+
 
 ## License
 
